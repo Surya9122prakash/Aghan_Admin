@@ -723,6 +723,10 @@
   <script src="assets/js/main.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
+    const token = sessionStorage.getItem('token');
+    if (!token) {
+      window.location.href = 'login.html';
+    }
     $(document).ready(function () {
       let currentPage = 1;
       let pageSize = 10;

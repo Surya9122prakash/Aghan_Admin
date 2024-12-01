@@ -551,24 +551,6 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>VELMURUGAN (AP424348)</td>
-                  <td>42.104.141.66</td>
-                  <td>Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Mobile
-                    Safari/537.36</td>
-                  <td>2024/07/09 14:23:21</td>
-                </tr>
-
-                <tr>
-                  <th scope="row">2</th>
-                  <td>E.WILLIAM AROKIYA DOSS (AP650756)</td>
-                  <td>157.51.179.82</td>
-                  <td>Mozilla/5.0 (Linux; Android 10; M2003J15SC) AppleWebKit/537.36 (KHTML, like Gecko)
-                    Chrome/87.0.4280.101 Mobile Safari/537.36</td>
-                  <td>2024/07/09 15:03:10</td>
-                </tr>
-
               </tbody>
             </table>
           </div>
@@ -576,21 +558,6 @@
           <!-- Pagination -->
           <nav aria-label="...">
             <ul class="pagination" style="font-size: 0.8rem; padding: 0; margin: 0;">
-              <li class="page-item disabled">
-                <span class="page-link" style="padding: 0.25rem 0.5rem;">Previous</span>
-              </li>
-              <li class="page-item active">
-                <a class="page-link" href="#" style="padding: 0.25rem 0.5rem;">1</a>
-              </li>
-              <li class="page-item">
-                <a class="page-link" href="#" style="padding: 0.25rem 0.5rem;">2</a>
-              </li>
-              <li class="page-item">
-                <a class="page-link" href="#" style="padding: 0.25rem 0.5rem;">3</a>
-              </li>
-              <li class="page-item">
-                <a class="page-link" href="#" style="padding: 0.25rem 0.5rem;">Next</a>
-              </li>
             </ul>
           </nav>
 
@@ -626,54 +593,160 @@
   <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
   <script src="assets/js/main.js"></script>
   <script>
-    let dataTable;
+    const token = sessionStorage.getItem('token');
+    if (!token) {
+      window.location.href = 'login.html';
+    }
 
-    $(document).ready(function () {
-      dataTable = $('#userLogsTable').DataTable({
-        "processing": true, // This shows the processing indicator during AJAX requests
-        "serverSide": true,
-        "ajax": {
-          "url": "/user-logs", // Make sure this URL is correct for your server
-          "type": "GET",
-          "error": function (xhr, error, thrown) {
-            // Handle AJAX errors
-            if (xhr.status === 401) {
-              alert("Unauthorized access. Please log in.");
-              window.location.href = "/login"; // Replace with your login URL
-            } else {
-              console.error("Error fetching user logs:", error, thrown);
-              alert("An error occurred while fetching user logs. Please try again later.");
-            }
-            // dataTable.processing(false);  // This line is removed.  Processing is handled automatically.
-          },
-          "data": function (d) {
-            d.search = $('#searchInput').val();
+
+    $(document).ready(async function () {
+      const getData = async (searchValue, start, length) => { // Added start and length parameters
+        try {
+          const url = new URL("https://aghan-backend.onrender.com/user-logs");
+
+          // Append parameters to URL
+          if (searchValue) {
+            url.searchParams.append('search', searchValue);
           }
-        },
-        "columns": [
-          // ... (Your column definitions) ...
-        ],
-        "lengthMenu": [ // Added lengthMenu for better pagination control
-          [10, 25, 50, -1],
-          [10, 25, 50, "All"]
-        ],
-        "language": {
-          // ... (Your language settings) ...
-        },
-        "drawCallback": function (settings) {
-          // Correct row numbering after each draw
-          var api = this.api();
-          var rows = api.rows({ page: 'current' }).nodes();
-          api.column(0, { page: 'current' }).data().each(function (d, j) {
-            $(rows).eq(j).children('td:first-child').html(d);
+
+          url.searchParams.append('start', start); // Append start for pagination
+          url.searchParams.append('length', length); // Append length for pagination
+
+
+          const response = await fetch(url, {
+            headers: {
+              'Authorization': `Bearer ${token}`
+            }
           });
+
+          if (!response.ok) {
+            if (response.status === 401) {
+              window.location.href = "login.html";
+              return;
+            }
+            const errorData = await response.json();
+            const errorMessage = errorData.message || `HTTP error ${response.status}`;
+            throw new Error(errorMessage);
+          }
+
+          const data = await response.json();
+          return data;
+
+        } catch (error) {
+          console.error("Error fetching user logs:", error);
+          $('#userLogsTable tbody').empty(); 
+          return null; 
         }
-      });
+      };
+
+
+      const renderTable = (data) => {
+        $('#userLogsTable tbody').empty(); // Clear existing rows
+
+        if (!data || !data.data || data.data.length === 0) { // Check if data exists and is not empty
+          const noDataRow = $('<tr><td colspan="5" style="text-align:center;">No data available.</td></tr>');
+          $('#userLogsTable tbody').append(noDataRow);
+          return;
+        }
+
+
+        data.data.forEach((row, index) => {  // Use forEach to iterate over the data
+          const newRow = $('<tr></tr>');
+          newRow.append(`<td>${index + 1 + parseInt(data.start)}</td>`); // Use data.start for correct numbering after search or pagination
+          newRow.append(`<td>${row.member}</td>`);
+          newRow.append(`<td>${row.ip_address}</td>`);
+          newRow.append(`<td>${row.browser}</td>`);
+          newRow.append(`<td>${row.date}</td>`);
+          $('#userLogsTable tbody').append(newRow);
+        });
+
+        // Update pagination (assuming you want client-side pagination now)
+        updatePagination(data.recordsTotal, data.recordsFiltered, parseInt(data.start), parseInt(data.length)); // Add start,length
+      };
+
+      const updatePagination = (totalRecords, filteredRecords, start, length) => {
+        const totalPages = Math.ceil(filteredRecords / length);
+        $('.pagination').empty();
+        let paginationHtml = '';
+
+        // Previous button
+        paginationHtml += '<li class="page-item ' + (start === 0 ? 'disabled' : '') + '">';
+        paginationHtml += '<a class="page-link" href="#" data-page="' + Math.max(0, parseInt(data.start) / parseInt(data.length) - 1) + '" aria-label="Previous">'; //data.start/length to calculate page
+        paginationHtml += '<span aria-hidden="true">«</span>';
+        paginationHtml += '</a></li>';
+
+
+        // Page numbers (show only a limited range)
+        const currentPage = start / length + 1;
+        const pagesToShow = 5; // Number of pages to display at a time
+        let startPage = Math.max(1, currentPage - Math.floor(pagesToShow / 2));
+        let endPage = Math.min(totalPages, startPage + pagesToShow - 1);
+
+        if (endPage - startPage + 1 < pagesToShow) {
+          startPage = Math.max(1, endPage - pagesToShow + 1);
+        }
+
+
+        for (let i = startPage; i <= endPage; i++) {
+          paginationHtml += `<li class="page-item ${i === currentPage ? 'active' : ''}"><a class="page-link" href="#" data-page="${i - 1}">${i}</a></li>`;
+        }
+
+
+
+        // Next button
+        paginationHtml += '<li class="page-item ' + (start + length >= filteredRecords ? 'disabled' : '') + '">';
+        paginationHtml += '<a class="page-link" href="#" data-page="' + (parseInt(data.start) / parseInt(data.length) + 1) + '" aria-label="Next">'; //data.start/length to calculate page
+        paginationHtml += '<span aria-hidden="true">»</span></a></li>';
+
+
+        $('.pagination').html(paginationHtml);
+
+        // Attach click handlers to pagination links after rendering
+        $('.pagination a').on('click', function (e) {
+          e.preventDefault();
+          const page = $(this).data('page');
+          const newStart = page * length;
+          loadDataAndRender(newStart, length); // Pass length here
+        });
+      };
+
+
+
+
+
+      const loadDataAndRender = async (start = 0, length = 10) => {  // Default values for start and length
+        const data = await getData($('#searchInput').val(), start, length);
+        if (data) { // Check if getData returned data successfully (not null)
+          renderTable(data);
+        }
+      }
+
+      loadDataAndRender(); // Initial load
+
 
       $('#searchInput').on('keyup', function () {
-        dataTable.draw();
+        loadDataAndRender(); // Reload data and render when search changes
       });
+
+
+      $('#clearIcon').on('click', function () {
+        $('#searchInput').val('');
+        $(this).hide();
+        loadDataAndRender(); // Reload data and render when clear is clicked
+      });
+
+
+
+      $('#rowCountSelect').on('change', function () {
+        loadDataAndRender(0, parseInt(this.value)); // Reload with new row count, starting from page 0
+      });
+
+
+
+
     });
+
+
   </script>
 
 </body>

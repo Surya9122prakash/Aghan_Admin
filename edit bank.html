@@ -644,6 +644,10 @@
   <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
   <script src="assets/js/main.js"></script>
   <script>
+    const token = sessionStorage.getItem('token');
+    if (!token) {
+      window.location.href = 'login.html';
+    }
     document.addEventListener('DOMContentLoaded', function () {
       const bankTable = document.getElementById('bankTable').getElementsByTagName('tbody')[0];
       const pagination = document.getElementById('pagination');

@@ -635,6 +635,10 @@
   <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
   <script src="assets/js/main.js"></script>
   <script>
+    const token = sessionStorage.getItem('token');
+    if (!token) {
+      window.location.href = 'login.html';
+    }
     document.addEventListener('DOMContentLoaded', async () => {
       let currentPage = 1; // Initialize current page
       let pageSize = 10; // Members per page

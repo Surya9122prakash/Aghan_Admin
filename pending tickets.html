@@ -550,15 +550,6 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Testing Subject</td>
-                  <td>This Message Represent as Only Testing Purpose</td>
-                  <td>2024/07/09 14:23:21</td>
-                  <td><button class="btn btn-success btn-sm">Approve</button> <button
-                      class="btn btn-danger btn-sm">Reject</button></td>
-                </tr>
-
               </tbody>
             </table>
           </div>
@@ -566,21 +557,6 @@
           <!-- Pagination -->
           <nav aria-label="...">
             <ul class="pagination" style="font-size: 0.8rem; padding: 0; margin: 0;">
-              <li class="page-item disabled">
-                <span class="page-link" style="padding: 0.25rem 0.5rem;">Previous</span>
-              </li>
-              <li class="page-item active">
-                <a class="page-link" href="#" style="padding: 0.25rem 0.5rem;">1</a>
-              </li>
-              <li class="page-item">
-                <a class="page-link" href="#" style="padding: 0.25rem 0.5rem;">2</a>
-              </li>
-              <li class="page-item">
-                <a class="page-link" href="#" style="padding: 0.25rem 0.5rem;">3</a>
-              </li>
-              <li class="page-item">
-                <a class="page-link" href="#" style="padding: 0.25rem 0.5rem;">Next</a>
-              </li>
             </ul>
           </nav>
 
@@ -609,6 +585,10 @@
   <script src="assets/js/main.js"></script>
 
   <script>
+    const token = sessionStorage.getItem('token');
+    if (!token) {
+      window.location.href = 'login.html';
+    }
     $(document).ready(function () {
       let currentPage = 1;
       let rowsPerPage = 10;

@@ -592,6 +592,10 @@
 
   <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
   <script>
+    const token = sessionStorage.getItem('token');
+    if (!token) {
+      window.location.href = 'login.html';
+    }
     $(document).ready(function () {
       let currentPage = 1;
       let pageSize = 10;

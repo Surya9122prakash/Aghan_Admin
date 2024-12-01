@@ -608,7 +608,10 @@
   <script src="assets/js/main.js"></script>
   <script>
     // In your frontend JavaScript (e.g., level income history.html)
-
+    const token = sessionStorage.getItem('token');
+    if (!token) {
+      window.location.href = 'login.html';
+    }
     $(document).ready(function () {
       let currentPage = 1;
       let rowsPerPage = 10;

@@ -594,6 +594,10 @@
   <script src="assets/js/main.js"></script>
 
   <script>
+    const token = sessionStorage.getItem('token');
+    if (!token) {
+      window.location.href = 'login.html';
+    }
     document.addEventListener('DOMContentLoaded', function () {  // Use DOMContentLoaded
       let currentPage = 1;
       let rowsPerPage = 10;

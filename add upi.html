@@ -559,6 +559,10 @@
   <script src="assets/js/main.js"></script>
 
   <script>
+    const token = sessionStorage.getItem('token');
+    if (!token) {
+      window.location.href = 'login.html';
+    }
     document.addEventListener('DOMContentLoaded', function () {
       const upiAddressInput = document.getElementById('upi');
       const imageInput = document.getElementById('fancy-file-upload');

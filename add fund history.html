@@ -593,6 +593,10 @@
   <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
   <script src="assets/js/main.js"></script>
   <script>
+    const token = sessionStorage.getItem('token');
+    if (!token) {
+      window.location.href = 'login.html';
+    }
     const apiUrl = 'https://aghan-backend.onrender.com/admin/add-funds-history'; // Path to your backend API
     let currentPage = 1;
     let pageSize = 10;
