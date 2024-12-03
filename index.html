@@ -194,8 +194,7 @@
               </a>
               <ul>
                 <li><a href="withdraw deduction.html"><i class="material-icons-outlined"></i>Update</a></li>
-                <li><a href="withdraw deduction history.html"><i
-                      class="material-icons-outlined"></i>History</a></li>
+                <li><a href="withdraw deduction history.html"><i class="material-icons-outlined"></i>History</a></li>
               </ul>
             </li>
           </ul>
@@ -410,7 +409,8 @@
                 <div style="display: flex; flex-direction: column; justify-content: center;">
                   <div style="font-size: 1.2em; font-weight: bold; color: #333;">Silver Board Income</div>
                   <div id="silverBoardIncome" class="text-success" style="font-size: 0.9em; color: #888;">
-                    <b>Rs.0.00/-</b></div>
+                    <b>Rs.0.00/-</b>
+                  </div>
                 </div>
               </div>
             </div>
@@ -436,7 +436,8 @@
                 <div style="display: flex; flex-direction: column; justify-content: center;">
                   <div style="font-size: 1.2em; font-weight: bold; color: #333;">Diamond Board Income</div>
                   <div id="diamondBoardIncome" class="text-success" style="font-size: 0.9em; color: #888;">
-                    <b>Rs.0.00/-</b></div>
+                    <b>Rs.0.00/-</b>
+                  </div>
                 </div>
               </div>
             </div>
@@ -449,7 +450,8 @@
                 <div style="display: flex; flex-direction: column; justify-content: center;">
                   <div style="font-size: 1.2em; font-weight: bold; color: #333;">Platinum Board Income</div>
                   <div id="platinumBoardIncome" class="text-success" style="font-size: 0.9em; color: #888;">
-                    <b>Rs.0.00/-</b></div>
+                    <b>Rs.0.00/-</b>
+                  </div>
                 </div>
               </div>
             </div>
@@ -487,7 +489,8 @@
                 </div>
                 <div style="display: flex; flex-direction: column; justify-content: center;">
                   <div style="font-size: 1.2em; font-weight: bold; color: #333;">Active Wallet Current Balance</div>
-                  <div id="activeWalletBalance" class="text-success" style="font-size: 0.9em; color: #888;"><b>Rs.0.00/-</b></div>
+                  <div id="activeWalletBalance" class="text-success" style="font-size: 0.9em; color: #888;">
+                    <b>Rs.0.00/-</b></div>
                 </div>
               </div>
             </div>
@@ -500,7 +503,8 @@
                 <div style="display: flex; flex-direction: column; justify-content: center;">
                   <div style="font-size: 1.2em; font-weight: bold; color: #333;">Earning Wallet Current Balance</div>
                   <div id="earningWalletBalance" class="text-success" style="font-size: 0.9em; color: #888;">
-                    <b>Rs.0.00/-</b></div>
+                    <b>Rs.0.00/-</b>
+                  </div>
                 </div>
               </div>
             </div>
@@ -513,7 +517,8 @@
                 <div style="display: flex; flex-direction: column; justify-content: center;">
                   <div style="font-size: 1.2em; font-weight: bold; color: #333;">Upgrade Wallet Current Balance</div>
                   <div id="upgradeWalletBalance" class="text-success" style="font-size: 0.9em; color: #888;">
-                    <b>Rs.0.00/-</b></div>
+                    <b>Rs.0.00/-</b>
+                  </div>
                 </div>
               </div>
             </div>
@@ -526,7 +531,8 @@
                 <div style="display: flex; flex-direction: column; justify-content: center;">
                   <div style="font-size: 1.2em; font-weight: bold; color: #333;">Rebirth Wallet Current Balance</div>
                   <div id="rebirthWalletBalance" class="text-success" style="font-size: 0.9em; color: #888;">
-                    <b>Rs.0.00/-</b></div>
+                    <b>Rs.0.00/-</b>
+                  </div>
                 </div>
               </div>
             </div>
@@ -539,7 +545,8 @@
                 <div style="display: flex; flex-direction: column; justify-content: center;">
                   <div style="font-size: 1.2em; font-weight: bold; color: #333;">Company Wallet Current Balance</div>
                   <div id="companyWalletBalance" class="text-success" style="font-size: 0.9em; color: #888;">
-                    <b>Rs.0.00/-</b></div>
+                    <b>Rs.0.00/-</b>
+                  </div>
                 </div>
               </div>
             </div>
@@ -583,7 +590,8 @@
                 <div style="display: flex; flex-direction: column; justify-content: center;">
                   <div style="font-size: 1.2em; font-weight: bold; color: #333;">Fund Transfer</div>
                   <div id="fundTransferReceived" class="text-success" style="font-size: 0.9em; color: #888;">
-                    <b>Rs.0.00/-</b></div>
+                    <b>Rs.0.00/-</b>
+                  </div>
                 </div>
               </div>
             </div>
@@ -646,15 +654,13 @@
 
             <div class="d-flex justify-content-between align-items-center mb-3">
               <p class="mb-0"><b>Use the below link to invite your friends.</b></p>
-              <a href="https://wa.me/?text=Welcome%20to%20Aghan%20Promoters,%20This%20is%20your%20registration%20link:%20https://aghan.in/plan/ulogin/newregister.php?userid=AP10000"
-                target="_blank">
+              <a id="referralLinkInvite" href="#" target="_blank">
                 <button class="btn btn-success" type="button">Invite</button>
               </a>
             </div>
 
             <div class="input-group mb-3">
-              <input type="text" class="form-control" id="referralLink"
-                value="https://aghan.in/plan/ulogin/newregister.php?userid=AP10000" readonly>
+              <input type="text" class="form-control" id="referralLink" readonly>
               <button class="btn btn-outline-secondary" type="button" id="copyButton"
                 onclick="copyToClipboard()">Copy</button>
             </div>
@@ -927,6 +933,8 @@
         const linkData = await response.json();
         const referrerLink = linkData.referrerLink;
         document.getElementById('referralLink').value = referrerLink; // Update the input field
+        const whatsappLink = `https://wa.me/?text=Welcome%20to%20Aghan%20Promoters,%20This%20is%20your%20registration%20link:${encodeURIComponent(referrerLink)}`;
+        document.getElementById('referralLinkInvite').href = whatsappLink;
       } catch (error) {
         console.error('Error fetching referrer link:', error);
       }
