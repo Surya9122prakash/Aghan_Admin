@@ -191,10 +191,8 @@
                         <i class="material-icons-outlined"></i>Level Plan
                      </a>
                      <ul>
-                        <li><a href="level income update.html"><i
-                                 class="material-icons-outlined"></i>Update</a></li>
-                        <li><a href="level income history.html"><i
-                                 class="material-icons-outlined"></i>History</a></li>
+                        <li><a href="level income update.html"><i class="material-icons-outlined"></i>Update</a></li>
+                        <li><a href="level income history.html"><i class="material-icons-outlined"></i>History</a></li>
                      </ul>
                   </li>
 
@@ -203,10 +201,9 @@
                         <i class="material-icons-outlined"></i>Withdraw Deduction
                      </a>
                      <ul>
-                        <li><a href="withdraw deduction.html"><i
-                                 class="material-icons-outlined"></i>Update</a></li>
-                        <li><a href="withdraw deduction history.html"><i
-                                 class="material-icons-outlined"></i>History</a></li>
+                        <li><a href="withdraw deduction.html"><i class="material-icons-outlined"></i>Update</a></li>
+                        <li><a href="withdraw deduction history.html"><i class="material-icons-outlined"></i>History</a>
+                        </li>
                      </ul>
                   </li>
                </ul>
@@ -451,6 +448,15 @@
       if (!token) {
          window.location.href = 'login.html';
       }
+      function getUserIdFromQuery() {
+         const urlParams = new URLSearchParams(window.location.search);
+         const userId = urlParams.get('userId');
+         if (userId) {
+            return userId;
+         } else {
+            return null; // Or throw an error if userId is required
+         }
+      }
       document.addEventListener('DOMContentLoaded', () => {
          fetchUserDetails()
             .then(userDetails => {
@@ -469,7 +475,8 @@
 
       async function fetchGenealogyData(userId) {
          try {
-            const response = await fetch(`https://aghan-backend.onrender.com/tree`, {
+            const userID = getUserIdFromQuery();
+            const response = await fetch(`https://aghan-backend.onrender.com/tree/${userID}`, {
                headers: {
                   'Authorization': 'Bearer ' + getAuthToken()
                }
@@ -506,13 +513,13 @@
          img.className = 'img-80 img-radius';
 
          userInfo.className = 'tree3_uinfo';
-         userInfo.innerHTML = `${node.id || 'N/A'}<br>${node.user_id || 'N/A'}`;
+         userInfo.innerHTML = `${node.user_id || 'N/A'} <br> ${node.referrer_id || 'N/A'}`;
 
          memInfo.className = 'mem_info';
          memInfo.innerHTML = `<table>
                          <tr><th>Name:</th><td>${node.username || 'Loading...'}</td></tr> 
                          <tr><th>ID:</th><td>${node.user_id || 'Loading...'}</td></tr>
-                         <tr><th>Parent:</th><td>${node.ReferrerID || 'N/A'}</td></tr>
+                         <tr><th>Parent:</th><td>${node.referrer_id || 'N/A'}</td></tr>
                          <!-- Add more table rows as needed -->
                        </table>`;
 

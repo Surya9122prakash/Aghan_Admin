@@ -1238,7 +1238,7 @@
 
       $('#memberTable').on('click', '.login-btn', function (event) {
         event.preventDefault();
-        const userId = $(this).data('user-id');
+        const userId = $(this).data('user-id'); 
         const password = $(this).data('password');
         const lockStatus = $(this).data('lock');
 
@@ -1260,7 +1260,7 @@
             if (response.success) {
               sessionStorage.setItem('token1', response.token);
               // Redirect to the path provided in the server's response
-              window.open('file:///C:/Users/sspsu/Desktop/aghan/Aghan-User/user.html');
+              window.open('https://aghan-user.netlify.app/user');
             } else {
               alert(response.message);
             }
