@@ -504,12 +504,10 @@
                     <th>Package Name</th>
                     <th>Price</th>
                     <th>GST</th>
-                    <th>Level1(%)</th>
-                    <th>Level2(%)</th>
-                    <th>Level3(%)</th>
-                    <th>Level4(%)</th>
-                    <th>Level5(%)</th>
-                    <th>Level6(%)</th>
+                    <th>Level1</th>
+                    <th>Level2</th>
+                    <th>Level3</th>
+                    <th>Level4</th>
                     <th>Upgrade</th>
                     <th>Action</th>
                   </tr>
@@ -562,33 +560,23 @@
               </div>
 
               <div class="col-md-12">
-                <label for="level1" class="form-label">Level 1 (%)</label>
+                <label for="level1" class="form-label">Level 1 </label>
                 <input type="number" class="form-control" id="level1" step="0.01" value="3" placeholder="Level 1 (%)">
               </div>
 
               <div class="col-md-12">
-                <label for="level2" class="form-label">Level 2 (%)</label>
+                <label for="level2" class="form-label">Level 2 </label>
                 <input type="number" class="form-control" id="level2" step="0.01" value="3" placeholder="Level 2 (%)">
               </div>
 
               <div class="col-md-12">
-                <label for="level3" class="form-label">Level 3 (%)</label>
+                <label for="level3" class="form-label">Level 3 </label>
                 <input type="number" class="form-control" id="level3" step="0.01" value="3" placeholder="Level 3 (%)">
               </div>
 
               <div class="col-md-12">
-                <label for="level4" class="form-label">Level 4 (%)</label>
+                <label for="level4" class="form-label">Level 4 </label>
                 <input type="number" class="form-control" id="level4" step="0.01" value="3" placeholder="Level 4 (%)">
-              </div>
-
-              <div class="col-md-12">
-                <label for="level5" class="form-label">Level 5 (%)</label>
-                <input type="number" class="form-control" id="level5" step="0.01" value="0" placeholder="Level 5 (%)">
-              </div>
-
-              <div class="col-md-12">
-                <label for="level6" class="form-label">Level 6 (%)</label>
-                <input type="number" class="form-control" id="level6" step="0.01" value="0" placeholder="Level 6 (%)">
               </div>
 
               <div class="d-flex justify-content-center">
@@ -673,7 +661,7 @@
       if (!packages || packages.length === 0) { // Handle empty package array
         const row = tbody.insertRow();
         const cell = row.insertCell();
-        cell.colSpan = 13; // Correct colSpan for 13 columns
+        cell.colSpan = 11; // Correct colSpan for 13 columns
         cell.textContent = "No packages found.";
         return;
       }
@@ -683,7 +671,7 @@
         const cells = []; // Array to store cell references
 
         // Create 13 cells
-        for (let i = 0; i < 13; i++) {
+        for (let i = 0; i < 11; i++) {
           cells[i] = row.insertCell();
         }
 
@@ -692,14 +680,12 @@
         cells[2].textContent = pkg.package_name || 'N/A';
         cells[3].textContent = `Rs. ${parseFloat(pkg.package_price) || 0}/-`;
         cells[4].textContent = `Rs. ${parseFloat(pkg.package_gst) || 0}/-`;
-        cells[5].textContent = `${parseFloat(pkg.level1) || 0}%`;
-        cells[6].textContent = `${parseFloat(pkg.level2) || 0}%`;
-        cells[7].textContent = `${parseFloat(pkg.level3) || 0}%`;
-        cells[8].textContent = `${parseFloat(pkg.level4) || 0}%`;
-        cells[9].textContent = `${parseFloat(pkg.level5) || 0}%`;
-        cells[10].textContent = `${parseFloat(pkg.level6) || 0}%`;
-        cells[11].textContent = `Rs. ${parseFloat(pkg.upgrade) || 0}/-`;
-        cells[12].innerHTML = pkg.package_id ? `
+        cells[5].textContent = `${parseFloat(pkg.level1) || 0}`;
+        cells[6].textContent = `${parseFloat(pkg.level2) || 0}`;
+        cells[7].textContent = `${parseFloat(pkg.level3) || 0}`;
+        cells[8].textContent = `${parseFloat(pkg.level4) || 0}`;
+        cells[9].textContent = `Rs. ${parseFloat(pkg.upgrade) || 0}/-`;
+        cells[10].innerHTML = pkg.package_id ? `
         <button class="btn btn-warning btn-sm edit-btn" data-package-id="${pkg.package_id}" data-bs-toggle="modal" data-bs-target="#editPackageModal">Edit</button>
     ` : '';
       });
@@ -741,9 +727,6 @@
         document.getElementById('level2').value = packageData.level2;
         document.getElementById('level3').value = packageData.level3;
         document.getElementById('level4').value = packageData.level4;
-        document.getElementById('level5').value = packageData.level5;
-        document.getElementById('level6').value = packageData.level6;
-        document.getElementById('level6').value = packageData.level6;
         const imagePreview = document.getElementById('imagePreview');
         imagePreview.src = packageData.package_image;
 
@@ -859,8 +842,6 @@
         level2: document.getElementById('level2').value,
         level3: document.getElementById('level3').value,
         level4: document.getElementById('level4').value,
-        level5: document.getElementById('level5').value,
-        level6: document.getElementById('level6').value,
         package_image: document.getElementById('imagePreview').value
       };
 

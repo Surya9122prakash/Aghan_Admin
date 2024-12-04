@@ -436,12 +436,11 @@
                   <tr>
                     <th>S.No</th>
                     <th>Board Name</th>
-                    <th>Level1(%)</th>
-                    <th>Level2(%)</th>
-                    <th>Level3(%)</th>
-                    <th>Level4(%)</th>
-                    <th>Level5(%)</th>
-                    <th>Level6(%)</th>
+                    <th>Level1</th>
+                    <th>Level2</th>
+                    <th>Level3</th>
+                    <th>Level4</th>
+                    <th>Level5</th>
                     <th>First Earning</th>
                     <th>Upgrade</th>
                     <th>Action</th>
@@ -485,33 +484,28 @@
 
 
               <div class="col-md-12">
-                <label for="level1" class="form-label">Level 1 (%)</label>
-                <input type="number" class="form-control" id="level1" step="0.01" value="10" placeholder="Level 1 (%)">
+                <label for="level1" class="form-label">Level 1</label>
+                <input type="number" class="form-control" id="level1" step="0.01" value="10" placeholder="Level 1">
               </div>
 
               <div class="col-md-12">
-                <label for="level2" class="form-label">Level 2 (%)</label>
-                <input type="number" class="form-control" id="level2" step="0.01" value="10" placeholder="Level 2 (%)">
+                <label for="level2" class="form-label">Level 2</label>
+                <input type="number" class="form-control" id="level2" step="0.01" value="10" placeholder="Level 2">
               </div>
 
               <div class="col-md-12">
-                <label for="level3" class="form-label">Level 3 (%)</label>
-                <input type="number" class="form-control" id="level3" step="0.01" value="10" placeholder="Level 3 (%)">
+                <label for="level3" class="form-label">Level 3</label>
+                <input type="number" class="form-control" id="level3" step="0.01" value="10" placeholder="Level 3">
               </div>
 
               <div class="col-md-12">
-                <label for="level4" class="form-label">Level 4 (%)</label>
-                <input type="number" class="form-control" id="level4" step="0.01" value="10" placeholder="Level 4 (%)">
+                <label for="level4" class="form-label">Level 4</label>
+                <input type="number" class="form-control" id="level4" step="0.01" value="10" placeholder="Level 4">
               </div>
 
               <div class="col-md-12">
-                <label for="level5" class="form-label">Level 5 (%)</label>
-                <input type="number" class="form-control" id="level5" step="0.01" value="10" placeholder="Level 5 (%)">
-              </div>
-
-              <div class="col-md-12">
-                <label for="level6" class="form-label">Level 6 (%)</label>
-                <input type="number" class="form-control" id="level6" step="0.01" value="10" placeholder="Level 5 (%)">
+                <label for="level5" class="form-label">Level 5</label>
+                <input type="number" class="form-control" id="level5" step="0.01" value="10" placeholder="Level 5">
               </div>
 
               <div class="col-md-12">
@@ -683,12 +677,11 @@
                 columns: [
                   { data: null, render: (data, type, row, meta) => meta.row + 1 },
                   { data: 'boardname' },
-                  { data: 'level1', render: (data) => `${data}%` }, // Format as percentage
-                  { data: 'level2', render: (data) => `${data}%` },
-                  { data: 'level3', render: (data) => `${data}%` },
-                  { data: 'level4', render: (data) => `${data}%` },
-                  { data: 'level5', render: (data) => `${data}%` },
-                  { data: 'level6', render: (data) => `${data}%` },
+                  { data: 'level1', render: (data) => `${data}` }, // Format as percentage
+                  { data: 'level2', render: (data) => `${data}` },
+                  { data: 'level3', render: (data) => `${data}` },
+                  { data: 'level4', render: (data) => `${data}` },
+                  { data: 'level5', render: (data) => `${data}` },
                   { data: 'first_earning', render: (data) => `Rs. ${data}/-` },
                   { data: 'upgrade', render: (data) => `Rs. ${data}/-` },
                   {
@@ -719,7 +712,6 @@
                     "level3": document.getElementById('level3').value,
                     "level4": document.getElementById('level4').value,
                     "level5": document.getElementById('level5').value,
-                    "level6": document.getElementById('level6').value,
                     "first_earning": document.getElementById('firstearning').value,
                     "upgrade": document.getElementById('Upgrade').value
                   }
@@ -745,7 +737,6 @@
         document.getElementById('level3').value = planData.level3;
         document.getElementById('level4').value = planData.level4;
         document.getElementById('level5').value = planData.level5;
-        document.getElementById('level6').value = planData.level6;
         document.getElementById('firstearning').value = planData.first_earning;
         document.getElementById('Upgrade').value = planData.upgrade;
       }

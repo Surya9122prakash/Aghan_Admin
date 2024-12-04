@@ -470,22 +470,6 @@
                     <td><a id="level4-link" href="view downline.html"><button
                           class="btn btn-warning btn-sm">View</button></a></td>
                   </tr>
-
-                  <tr>
-                    <th scope="row">5</th>
-                    <td>Level 5</td>
-                    <td><a id="level5-count" href=""></a></td>
-                    <td><a id="level5-link" href="view downline.html"><button
-                          class="btn btn-warning btn-sm">View</button></a></td>
-                  </tr>
-
-                  <tr>
-                    <th scope="row">6</th>
-                    <td>Level 6</td>
-                    <td><a id="level6-count" href=""></a></td>
-                    <td><a id="level6-link" href="view downline.html"><button
-                          class="btn btn-warning btn-sm">View</button></a></td>
-                  </tr>
                 </tbody>
               </table>
             </strong>
@@ -555,7 +539,7 @@
       }
 
       function updateTeamData(teamData) {
-        for (let level = 1; level <= 6; level++) {
+        for (let level = 1; level <= 4; level++) {
           const levelKey = `level${level}`;
           if (teamData.hasOwnProperty(levelKey)) {
             const levelInfo = teamData[levelKey];

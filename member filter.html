@@ -732,7 +732,7 @@
             Swal.fire({
               icon: 'error',
               title: 'Download Error',
-              text: `Error downloading Excel: ${errorData.error || errorData.message || 'An unknown error occurred'}`
+              text: `${errorData.error || errorData.message || 'An unknown error occurred'}`
             });
             return;
           }
@@ -776,7 +776,7 @@
             Swal.fire({
               icon: 'error',
               title: 'Download Error',
-              text: `Error downloading PDF: ${errorData.error || errorData.message || 'An unknown error occurred'}`
+              text: `${errorData.error || errorData.message || 'An unknown error occurred'}`
             });
             return;
           }
