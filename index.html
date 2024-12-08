@@ -680,16 +680,9 @@
                   <h5 class="mb-0">Total Members</h5>
                 </div>
               </div>
-              <div id="chart10"></div>
               <div
                 class="d-flex flex-column flex-lg-row align-items-start justify-content-around border p-3 rounded-4 mt-3 gap-3">
                 <div class="d-flex align-items-center gap-4">
-                  <div>
-                    <p class="mb-0 data-attributes">
-                      <span
-                        data-peity='{ "fill": ["#ff6a00", "rgb(0 0 0 / 12%)"], "innerRadius": 22, "radius": 30 }'>5/7</span>
-                    </p>
-                  </div>
                   <div>
                     <p class="mb-1 fs-6 fw-bold">Total Joined</p>
                     <h2 class="mb-0" id="totalMembers"></h2>
@@ -697,12 +690,6 @@
                 </div>
                 <div class="vr"></div>
                 <div class="d-flex align-items-center gap-4">
-                  <div>
-                    <p class="mb-0 data-attributes">
-                      <span
-                        data-peity='{ "fill": ["#306844", "rgb(0 0 0 / 12%)"], "innerRadius": 22, "radius": 30 }'>5/7</span>
-                    </p>
-                  </div>
                   <div>
                     <p class="mb-1 fs-6 fw-bold">Active Members</p>
                     <h2 class="mb-0" id="activeMembers"></h2>
@@ -713,11 +700,9 @@
           </div>
         </div>
       </div>
-
-      <!--Graph End-->
-      <div class="user-list"> <!-- Add this div for PerfectScrollbar -->
+      <div class="user-list"> 
         <ul>
-          <!-- Your list items would go here if this was a list -->
+         
         </ul>
       </div>
     </div>
@@ -808,7 +793,7 @@
         }
 
         const data = await response.json();
-        console.log("Received data:", data); // Add this line for debugging
+        console.log("Received data:", data);
 
         function formatAmount(amount) {
           return parseFloat(amount) || 0.00;
@@ -888,7 +873,7 @@
         }
 
         const summaryData = await response.json();
-        console.log("Summary Data:", summaryData); // Check the received data
+        console.log("Summary Data:", summaryData);
 
 
         // Update the summary section in the dashboard
@@ -990,48 +975,9 @@
 
         document.getElementById('totalMembers').textContent = memberCounts.totalMembers;
         document.getElementById('activeMembers').textContent = memberCounts.activeMembers;
-
-        // Update ApexCharts data here using memberCounts.totalMembers and memberCounts.activeMembers
-        updateChart(memberCounts.totalMembers, memberCounts.activeMembers);
-
       } catch (error) {
         console.error('Error fetching member counts:', error);
       }
-    }
-    function updateChart(totalMembers, activeMembers) {
-      //Bar Chart using ApexCharts
-      var options = {
-        series: [{
-          name: 'Members',
-          data: [activeMembers, totalMembers - activeMembers]
-        }],
-        chart: {
-          type: 'bar',
-          height: 350
-        },
-        plotOptions: {
-          bar: {
-            horizontal: false,
-            dataLabels: {
-              position: 'top',
-            },
-          }
-        },
-        dataLabels: {
-          enabled: true,
-          offsetX: -6,
-          style: {
-            fontSize: '12px',
-            colors: ["#304758"]
-          }
-        },
-        xaxis: {
-          categories: ['Active', 'Inactive'],
-        }
-      };
-
-      var chart = new ApexCharts(document.querySelector("#chart10"), options);
-      chart.render();
     }
   </script>
 </body>

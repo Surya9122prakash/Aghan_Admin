@@ -484,27 +484,27 @@
 
 
               <div class="col-md-12">
-                <label for="level1" class="form-label">Level 1</label>
+                <label for="level1" class="form-label">Level 1 (%)</label>
                 <input type="number" class="form-control" id="level1" step="0.01" value="10" placeholder="Level 1">
               </div>
 
               <div class="col-md-12">
-                <label for="level2" class="form-label">Level 2</label>
+                <label for="level2" class="form-label">Level 2 (%)</label>
                 <input type="number" class="form-control" id="level2" step="0.01" value="10" placeholder="Level 2">
               </div>
 
               <div class="col-md-12">
-                <label for="level3" class="form-label">Level 3</label>
+                <label for="level3" class="form-label">Level 3 (%)</label>
                 <input type="number" class="form-control" id="level3" step="0.01" value="10" placeholder="Level 3">
               </div>
 
               <div class="col-md-12">
-                <label for="level4" class="form-label">Level 4</label>
+                <label for="level4" class="form-label">Level 4 (%)</label>
                 <input type="number" class="form-control" id="level4" step="0.01" value="10" placeholder="Level 4">
               </div>
 
               <div class="col-md-12">
-                <label for="level5" class="form-label">Level 5</label>
+                <label for="level5" class="form-label">Level 5 (%)</label>
                 <input type="number" class="form-control" id="level5" step="0.01" value="10" placeholder="Level 5">
               </div>
 
@@ -677,11 +677,11 @@
                 columns: [
                   { data: null, render: (data, type, row, meta) => meta.row + 1 },
                   { data: 'boardname' },
-                  { data: 'level1', render: (data) => `${data}` }, // Format as percentage
-                  { data: 'level2', render: (data) => `${data}` },
-                  { data: 'level3', render: (data) => `${data}` },
-                  { data: 'level4', render: (data) => `${data}` },
-                  { data: 'level5', render: (data) => `${data}` },
+                  { data: 'level1', render: (data) => `${data} %` }, // Format as percentage
+                  { data: 'level2', render: (data) => `${data} %` },
+                  { data: 'level3', render: (data) => `${data} %` },
+                  { data: 'level4', render: (data) => `${data} %` },
+                  { data: 'level5', render: (data) => `${data} %` },
                   { data: 'first_earning', render: (data) => `Rs. ${data}/-` },
                   { data: 'upgrade', render: (data) => `Rs. ${data}/-` },
                   {

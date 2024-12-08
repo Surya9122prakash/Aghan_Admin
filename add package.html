@@ -680,10 +680,10 @@
         cells[2].textContent = pkg.package_name || 'N/A';
         cells[3].textContent = `Rs. ${parseFloat(pkg.package_price) || 0}/-`;
         cells[4].textContent = `Rs. ${parseFloat(pkg.package_gst) || 0}/-`;
-        cells[5].textContent = `${parseFloat(pkg.level1) || 0}`;
-        cells[6].textContent = `${parseFloat(pkg.level2) || 0}`;
-        cells[7].textContent = `${parseFloat(pkg.level3) || 0}`;
-        cells[8].textContent = `${parseFloat(pkg.level4) || 0}`;
+        cells[5].textContent = `${parseFloat(pkg.level1) || 0}%`;
+        cells[6].textContent = `${parseFloat(pkg.level2) || 0}%`;
+        cells[7].textContent = `${parseFloat(pkg.level3) || 0}%`;
+        cells[8].textContent = `${parseFloat(pkg.level4) || 0}%`;
         cells[9].textContent = `Rs. ${parseFloat(pkg.upgrade) || 0}/-`;
         cells[10].innerHTML = pkg.package_id ? `
         <button class="btn btn-warning btn-sm edit-btn" data-package-id="${pkg.package_id}" data-bs-toggle="modal" data-bs-target="#editPackageModal">Edit</button>
