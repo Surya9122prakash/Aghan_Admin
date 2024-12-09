@@ -1260,7 +1260,7 @@
           });
 
           if (!response.ok) {
-            if (response.status === 401) { 
+            if (response.status === 401) {
               throw new Error('Incorrect username or password.');
             } else {
               const errorData = await response.json();
@@ -1270,9 +1270,11 @@
 
           const data = await response.json();
           if (data.success) {
-            sessionStorage.setItem('token1', data.token);
-            window.open('https://aghan-user.netlify.app/user'); // Redirect to user dashboard
+            const token = data.token;
+            const targetUrl = `https://aghan-user.netlify.app/user?token=${encodeURIComponent(token)}`;
+            window.open(targetUrl, '_blank');
           }
+
         } catch (error) {
           console.error('Login error:', error);
         }
