@@ -1271,7 +1271,7 @@
           const data = await response.json();
           if (data.success) {
             const token = data.token;
-            const targetUrl = `https://aghan-user.netlify.app/user?token=${encodeURIComponent(token)}`;
+            const targetUrl = `https://aghan-user.vercel.app/user.html?token=${encodeURIComponent(token)}`;
             window.open(targetUrl, '_blank');
           }
 
