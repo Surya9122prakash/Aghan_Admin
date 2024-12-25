@@ -474,7 +474,7 @@
       async function fetchGenealogyData(userId) {
          try {
             const userID = getUserIdFromQuery() || userId;
-            const response = await fetch(`https://aghan-backend.onrender.com/tree/${userID}`, {
+            const response = await fetch(`https://aghan-backend-fbs2.vercel.app/tree/${userID}`, {
                headers: {
                   'Authorization': 'Bearer ' + getAuthToken()
                }
@@ -572,7 +572,7 @@
                throw new Error('Not logged in.');
             }
 
-            const response = await fetch('https://aghan-backend.onrender.com/user', {
+            const response = await fetch('https://aghan-backend-fbs2.vercel.app/user', {
                headers: {
                   'Authorization': 'Bearer ' + token
                }

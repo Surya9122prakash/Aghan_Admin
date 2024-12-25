@@ -450,7 +450,7 @@
 
         try {
           const token = sessionStorage.getItem('token'); // Get the token from storage (sessionStorage in this example)
-          const response = await fetch('https://aghan-backend.onrender.com/news', { // Your API endpoint for adding news
+          const response = await fetch('https://aghan-backend-fbs2.vercel.app/news', { // Your API endpoint for adding news
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

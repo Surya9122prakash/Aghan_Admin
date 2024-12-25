@@ -496,7 +496,7 @@
       const paginationList = document.querySelector('.pagination');
 
       function fetchAlerts(page, limit, search) {
-        fetch(`https://aghan-backend.onrender.com/alerts?page=${page}&limit=${limit}&search=${search}`, {
+        fetch(`https://aghan-backend-fbs2.vercel.app/alerts?page=${page}&limit=${limit}&search=${search}`, {
           headers: { 'Authorization': 'Bearer ' + sessionStorage.getItem('token') }
         })
           .then(response => {
@@ -566,7 +566,7 @@
 
         }).then((result) => {
           if (result.isConfirmed) {
-            fetch(`https://aghan-backend.onrender.com/delete-alert/${alertId}`, {
+            fetch(`https://aghan-backend-fbs2.vercel.app/delete-alert/${alertId}`, {
               method: 'DELETE',
               headers: { 'Authorization': 'Bearer ' + sessionStorage.getItem('token') }
             })

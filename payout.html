@@ -526,7 +526,7 @@
       let searchTerm = '';
 
       function loadPayouts() {
-        fetch('https://aghan-backend.onrender.com/payout', {
+        fetch('https://aghan-backend-fbs2.vercel.app/payout', {
           params: {
             page: currentPage,
             pageSize: pageSize,
@@ -571,7 +571,7 @@
           const action = $(this).data('action');
 
           try {
-            const response = await fetch(`https://aghan-backend.onrender.com/update-payout-status/${payoutId}`, {
+            const response = await fetch(`https://aghan-backend-fbs2.vercel.app/update-payout-status/${payoutId}`, {
               method: 'PUT',
               headers: {
                 'Content-Type': 'application/json',
@@ -664,7 +664,7 @@
         const searchTerm = $('#searchInput').val(); // Get searchTerm
 
         try {
-          const response = await fetch(`https://aghan-backend.onrender.com/admin/download/payout-excel?search=${searchTerm}`, {
+          const response = await fetch(`https://aghan-backend-fbs2.vercel.app/admin/download/payout-excel?search=${searchTerm}`, {
             headers: {
               'Authorization': `Bearer ${sessionStorage.getItem('token')}`
             }

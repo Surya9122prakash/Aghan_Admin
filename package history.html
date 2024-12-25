@@ -493,7 +493,7 @@
 
 
       function loadPackages(page, limit, search) {
-        fetch('https://aghan-backend.onrender.com/packages?page=' + page + '&limit=' + limit + '&search=' + search, {
+        fetch('https://aghan-backend-fbs2.vercel.app/packages?page=' + page + '&limit=' + limit + '&search=' + search, {
           headers: {
             'Authorization': 'Bearer ' + sessionStorage.getItem('token')
           }

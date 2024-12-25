@@ -489,7 +489,7 @@
       function fetchData() {
         searchTerm = $('#searchInput').val();
         const token = sessionStorage.getItem('token')
-        fetch(`https://aghan-backend.onrender.com/tree-view?page=${currentPage}&pageSize=${pageSize}&search=${searchTerm}`, {
+        fetch(`https://aghan-backend-fbs2.vercel.app/tree-view?page=${currentPage}&pageSize=${pageSize}&search=${searchTerm}`, {
           headers: {
             Authorization: `Bearer ${token}`
           }

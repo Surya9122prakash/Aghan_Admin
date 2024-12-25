@@ -496,7 +496,7 @@
       const debouncedLoadRejectedIncome = _.debounce(loadRejectedIncome, 300); // Debounce for better performance
 
       function loadRejectedIncome() {
-        fetch('https://aghan-backend.onrender.com/rejectedIncome', {
+        fetch('https://aghan-backend-fbs2.vercel.app/rejectedIncome', {
           params: {
             page: currentPage,
             pageSize: pageSize,

@@ -541,7 +541,7 @@
 
       function fetchUPIs(page, limit, search) {
         $.ajax({
-          url: 'https://aghan-backend.onrender.com/upis',
+          url: 'https://aghan-backend-fbs2.vercel.app/upis',
           type: 'GET',
           data: { page: page, limit: limit, search: search },
           headers: {
@@ -581,7 +581,7 @@
           const upiId = $(this).data('upi-id');
 
           $.ajax({
-            url: `https://aghan-backend.onrender.com/upis/${upiId}`,
+            url: `https://aghan-backend-fbs2.vercel.app/upis/${upiId}`,
             type: 'GET',
             headers: {
               'Authorization': 'Bearer ' + sessionStorage.getItem('token')
@@ -709,7 +709,7 @@
       });
 
       function submitEditForm(upiId, payload) {
-        fetch(`https://aghan-backend.onrender.com/edit-upi/${upiId}`, {
+        fetch(`https://aghan-backend-fbs2.vercel.app/edit-upi/${upiId}`, {
           method: 'PUT',
           body: JSON.stringify(payload),  // Assuming 'payload' is your FormData object
           headers: {

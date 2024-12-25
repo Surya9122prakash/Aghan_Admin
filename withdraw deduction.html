@@ -422,7 +422,7 @@
       // Function to fetch the current withdrawal deduction and display as a percentage
       async function fetchDeduction() {
         try {
-          const response = await fetch('https://aghan-backend.onrender.com/withdraw-deduction', {
+          const response = await fetch('https://aghan-backend-fbs2.vercel.app/withdraw-deduction', {
             headers: {
               'Authorization': 'Bearer ' + sessionStorage.getItem('token')
             }
@@ -462,7 +462,7 @@
         }
 
         try {
-          const response = await fetch('https://aghan-backend.onrender.com/withdraw-deduction', {
+          const response = await fetch('https://aghan-backend-fbs2.vercel.app/withdraw-deduction', {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',

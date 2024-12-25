@@ -659,7 +659,7 @@
       });
 
       function loadLevelIncomePlans(page, limit, search) {
-        fetch(`https://aghan-backend.onrender.com/level_income_plans?page=${page}&limit=${limit}&search=${search}`, {
+        fetch(`https://aghan-backend-fbs2.vercel.app/level_income_plans?page=${page}&limit=${limit}&search=${search}`, {
           headers: {
             'Authorization': 'Bearer ' + sessionStorage.getItem('token') // Or localStorage
           }
@@ -742,7 +742,7 @@
       }
 
       function updateLevelIncomePlan(planId, updatedData) {
-        fetch(`https://aghan-backend.onrender.com/level_income_plans/${planId}`, {
+        fetch(`https://aghan-backend-fbs2.vercel.app/level_income_plans/${planId}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',

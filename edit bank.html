@@ -553,7 +553,7 @@
       async function fetchBankData(page, limit, search) {
         try {
           const token = sessionStorage.getItem('token')
-          const response = await fetch(`https://aghan-backend.onrender.com/banks?page=${page}&limit=${limit}&search=${search}`,{
+          const response = await fetch(`https://aghan-backend-fbs2.vercel.app/banks?page=${page}&limit=${limit}&search=${search}`,{
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`
@@ -716,7 +716,7 @@
             bank_branch: document.getElementById('editBankBranch').value,
           };
 
-          const response = await fetch(`https://aghan-backend.onrender.com/edit-bank/${account_id}`, {
+          const response = await fetch(`https://aghan-backend-fbs2.vercel.app/edit-bank/${account_id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(updatedBank),

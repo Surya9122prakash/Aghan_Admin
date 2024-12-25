@@ -565,7 +565,7 @@
     }
     async function fetchAndPopulateCompanyData() { // Replace or make dynamic
       try {
-        const response = await fetch(`https://aghan-backend.onrender.com/companies/c4941807-d707-4223-acbf-7bafb19616ec`);
+        const response = await fetch(`https://aghan-backend-fbs2.vercel.app/companies/c4941807-d707-4223-acbf-7bafb19616ec`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -649,7 +649,7 @@
 
         console.log(formData)
         try {
-          const response = await fetch(`https://aghan-backend.onrender.com/companies/${companyId}`, {
+          const response = await fetch(`https://aghan-backend-fbs2.vercel.app/companies/${companyId}`, {
             method: 'PUT',
             body: JSON.stringify(formData),
             headers: {

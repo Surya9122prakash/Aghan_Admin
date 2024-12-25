@@ -498,7 +498,7 @@
       const debounceLoadPaidIncome = _.debounce(loadPaidIncome, 300); // Debounce for better performance
 
       function loadPaidIncome() {
-        fetch('https://aghan-backend.onrender.com/paidIncome', {
+        fetch('https://aghan-backend-fbs2.vercel.app/paidIncome', {
           params: {
             page: currentPage,
             pageSize: pageSize,

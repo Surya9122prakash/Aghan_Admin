@@ -497,7 +497,7 @@
       const pageSize = parseInt(document.getElementById('rowCountSelect').value, 10) || 10;
       try {
         const token = sessionStorage.getItem('token');
-        const response = await fetch(`https://aghan-backend.onrender.com/approved-fund-requests?page=${page}&pageSize=${pageSize}`, {
+        const response = await fetch(`https://aghan-backend-fbs2.vercel.app/approved-fund-requests?page=${page}&pageSize=${pageSize}`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }

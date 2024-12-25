@@ -485,7 +485,7 @@
 
       const fetchTickets = async () => {
         try {
-          const response = await fetch(`https://aghan-backend.onrender.com/tickets?page=${currentPage}&limit=${rowsPerPage}&search=${searchTerm}`, {
+          const response = await fetch(`https://aghan-backend-fbs2.vercel.app/tickets?page=${currentPage}&limit=${rowsPerPage}&search=${searchTerm}`, {
             headers: {
               'Authorization': `Bearer ${sessionStorage.getItem('token')}`
             }
@@ -593,7 +593,7 @@
       const approveTicket = async (event) => {
         const ticketId = $(event.target).data("ticket-id");
         try {
-          const response = await fetch(`https://aghan-backend.onrender.com/tickets/${ticketId}/approve`, {
+          const response = await fetch(`https://aghan-backend-fbs2.vercel.app/tickets/${ticketId}/approve`, {
             method: 'PUT',
             headers: {
               'Authorization': `Bearer ${sessionStorage.getItem('token')}`
@@ -618,7 +618,7 @@
       const rejectTicket = async (event) => {
         const ticketId = $(event.target).data("ticket-id");
         try {
-          const response = await fetch(`https://aghan-backend.onrender.com/tickets/${ticketId}/reject`, {
+          const response = await fetch(`https://aghan-backend-fbs2.vercel.app/tickets/${ticketId}/reject`, {
             method: 'PUT',
             headers: {
               'Authorization': `Bearer ${sessionStorage.getItem('token')}`
