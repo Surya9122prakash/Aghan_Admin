@@ -10,6 +10,7 @@
   <!-- loader-->
   <link href="assets/css/pace.min.css" rel="stylesheet">
   <script src="assets/js/pace.min.js"></script>
+  <script src="config.js"></script>
 
   <!--plugins-->
   <link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
@@ -196,8 +197,7 @@
               </a>
               <ul>
                 <li><a href="withdraw deduction.html"><i class="material-icons-outlined"></i>Update</a></li>
-                <li><a href="withdraw deduction history.html"><i
-                      class="material-icons-outlined"></i>History</a></li>
+                <li><a href="withdraw deduction history.html"><i class="material-icons-outlined"></i>History</a></li>
               </ul>
             </li>
           </ul>
@@ -470,7 +470,7 @@
           return;
         }
 
-        const response = await fetch('https://aghan-backend-fbs2.vercel.app/gold-board-team', { // Your API endpoint
+        const response = await fetch(window.ENV.API_BASE_URL + '/gold-board-team', { // Your API endpoint
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -513,7 +513,7 @@
         const levelCell = document.createElement('td');
         const membersCell = document.createElement('td');
         const actionCell = document.createElement('td');
-        idCell.textContent=`${level}`;
+        idCell.textContent = `${level}`;
         levelCell.textContent = `Level ${level}`;
 
         // Link and member count, handle potential undefined levelData

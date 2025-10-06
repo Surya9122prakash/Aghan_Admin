@@ -10,6 +10,7 @@
   <!-- loader-->
   <link href="assets/css/pace.min.css" rel="stylesheet">
   <script src="assets/js/pace.min.js"></script>
+  <script src="config.js"></script>
 
   <!--plugins-->
   <link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
@@ -196,8 +197,7 @@
               </a>
               <ul>
                 <li><a href="withdraw deduction.html"><i class="material-icons-outlined"></i>Update</a></li>
-                <li><a href="withdraw deduction history.html"><i
-                      class="material-icons-outlined"></i>History</a></li>
+                <li><a href="withdraw deduction history.html"><i class="material-icons-outlined"></i>History</a></li>
               </ul>
             </li>
           </ul>
@@ -460,7 +460,7 @@
           alert_message: alertMessage,
         };
 
-        fetch('https://aghan-backend-fbs2.vercel.app/add-alert', {
+        fetch(window.ENV.API_BASE_URL + '/add-alert', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

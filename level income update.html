@@ -10,6 +10,7 @@
   <!-- loader-->
   <link href="assets/css/pace.min.css" rel="stylesheet">
   <script src="assets/js/pace.min.js"></script>
+  <script src="config.js"></script>
 
   <!--plugins-->
   <link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
@@ -152,7 +153,7 @@
             </li>
             <li>
               <a href="javascript:;" class="has-arrow">
-                <i class="material-icons-outlined"></i>User 
+                <i class="material-icons-outlined"></i>User
                 erts
               </a>
               <ul>
@@ -200,8 +201,7 @@
               </a>
               <ul>
                 <li><a href="withdraw deduction.html"><i class="material-icons-outlined"></i>Update</a></li>
-                <li><a href="withdraw deduction history.html"><i
-                      class="material-icons-outlined"></i>History</a></li>
+                <li><a href="withdraw deduction history.html"><i class="material-icons-outlined"></i>History</a></li>
               </ul>
             </li>
           </ul>
@@ -452,7 +452,7 @@
           </div>
           <nav aria-label="...">
             <ul class="pagination" id="pagination" style="font-size: 0.8rem; padding: 0; margin: 0;">
-              
+
             </ul>
           </nav>
         </div>
@@ -659,7 +659,7 @@
       });
 
       function loadLevelIncomePlans(page, limit, search) {
-        fetch(`https://aghan-backend-fbs2.vercel.app/level_income_plans?page=${page}&limit=${limit}&search=${search}`, {
+        fetch(`${window.ENV.API_BASE_URL}/level_income_plans?page=${page}&limit=${limit}&search=${search}`, {
           headers: {
             'Authorization': 'Bearer ' + sessionStorage.getItem('token') // Or localStorage
           }
@@ -742,7 +742,7 @@
       }
 
       function updateLevelIncomePlan(planId, updatedData) {
-        fetch(`https://aghan-backend-fbs2.vercel.app/level_income_plans/${planId}`, {
+        fetch(`${window.ENV.API_BASE_URL}/level_income_plans/${planId}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',

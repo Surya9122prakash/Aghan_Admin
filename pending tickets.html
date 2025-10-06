@@ -10,6 +10,7 @@
   <!-- loader-->
   <link href="assets/css/pace.min.css" rel="stylesheet">
   <script src="assets/js/pace.min.js"></script>
+  <script src="config.js"></script>
 
   <!--plugins-->
   <link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
@@ -196,8 +197,7 @@
               </a>
               <ul>
                 <li><a href="withdraw deduction.html"><i class="material-icons-outlined"></i>Update</a></li>
-                <li><a href="withdraw deduction history.html"><i
-                      class="material-icons-outlined"></i>History</a></li>
+                <li><a href="withdraw deduction history.html"><i class="material-icons-outlined"></i>History</a></li>
               </ul>
             </li>
           </ul>
@@ -485,7 +485,7 @@
 
       const fetchTickets = async () => {
         try {
-          const response = await fetch(`https://aghan-backend-fbs2.vercel.app/tickets?page=${currentPage}&limit=${rowsPerPage}&search=${searchTerm}`, {
+          const response = await fetch(`${window.ENV.API_BASE_URL}/tickets?page=${currentPage}&limit=${rowsPerPage}&search=${searchTerm}`, {
             headers: {
               'Authorization': `Bearer ${sessionStorage.getItem('token')}`
             }
@@ -593,7 +593,7 @@
       const approveTicket = async (event) => {
         const ticketId = $(event.target).data("ticket-id");
         try {
-          const response = await fetch(`https://aghan-backend-fbs2.vercel.app/tickets/${ticketId}/approve`, {
+          const response = await fetch(`${window.ENV.API_BASE_URL}/tickets/${ticketId}/approve`, {
             method: 'PUT',
             headers: {
               'Authorization': `Bearer ${sessionStorage.getItem('token')}`
@@ -609,7 +609,7 @@
             console.error("Error approving ticket:", errorData);
           }
         } catch (error) {
-        console.error("Error approving ticket:", error);
+          console.error("Error approving ticket:", error);
           alert("An error occurred while approving the ticket.");
         }
       };
@@ -618,7 +618,7 @@
       const rejectTicket = async (event) => {
         const ticketId = $(event.target).data("ticket-id");
         try {
-          const response = await fetch(`https://aghan-backend-fbs2.vercel.app/tickets/${ticketId}/reject`, {
+          const response = await fetch(`${window.ENV.API_BASE_URL}/tickets/${ticketId}/reject`, {
             method: 'PUT',
             headers: {
               'Authorization': `Bearer ${sessionStorage.getItem('token')}`
